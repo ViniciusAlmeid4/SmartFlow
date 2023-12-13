@@ -1,0 +1,131 @@
+-- Table: public.alarmes
+
+-- DROP TABLE IF EXISTS public.alarmes;
+
+CREATE TABLE IF NOT EXISTS public.alarmes
+(
+    id integer NOT NULL DEFAULT nextval('alarmes_id_seq'::regclass),
+    nome character varying(55) COLLATE pg_catalog."default",
+    valor_maximo double precision,
+    alarme_alto double precision,
+    alarme_baixo double precision,
+    CONSTRAINT alarmes_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.alarmes
+    OWNER to <Seu Usuario>;  -- Coloque o nome do usuário criado por você
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-- Table: public.dadossensores
+
+-- DROP TABLE IF EXISTS public.dadossensores;
+
+CREATE TABLE IF NOT EXISTS public.dadossensores
+(
+    id integer NOT NULL DEFAULT nextval('dadossensores_id_seq'::regclass),
+    data_hora timestamp without time zone,
+    num_sensor integer,
+    valor double precision NOT NULL,
+    CONSTRAINT dadossensores_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.dadossensores
+    OWNER to <Seu Usuario>;  -- Coloque o nome do usuário criado por você
+-- Index: idx_data_hora
+
+-- DROP INDEX IF EXISTS public.idx_data_hora;
+
+CREATE INDEX IF NOT EXISTS idx_data_hora
+    ON public.dadossensores USING btree
+    (data_hora ASC NULLS LAST)
+    TABLESPACE pg_default;
+-- Index: idx_num_sensor
+
+-- DROP INDEX IF EXISTS public.idx_num_sensor;
+
+CREATE INDEX IF NOT EXISTS idx_num_sensor
+    ON public.dadossensores USING btree
+    (num_sensor ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-- Table: public.historico_alarmes
+
+-- DROP TABLE IF EXISTS public.historico_alarmes;
+
+CREATE TABLE IF NOT EXISTS public.historico_alarmes
+(
+    id_historico_alarmes integer NOT NULL DEFAULT nextval('historico_alarmes_id_historico_alarmes_seq'::regclass),
+    num_sensor_alarme integer,
+    valor_alarme double precision,
+    tipo_alarme integer,
+    verificado boolean,
+    data_alarme timestamp without time zone,
+    CONSTRAINT historico_alarmes_pkey PRIMARY KEY (id_historico_alarmes)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.historico_alarmes
+    OWNER to <Seu Usuario>;  -- Coloque o nome do usuário criado por você
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-- Table: public.sensores
+
+-- DROP TABLE IF EXISTS public.sensores;
+
+CREATE TABLE IF NOT EXISTS public.sensores
+(
+    id integer NOT NULL DEFAULT nextval('sensores_id_seq'::regclass),
+    data_hora timestamp without time zone,
+    tipo integer,
+    num_sensor integer,
+    nome character varying(180) COLLATE pg_catalog."default",
+    status boolean,
+    id_usuario integer NOT NULL,
+    padrao_alarme integer NOT NULL,
+    CONSTRAINT sensores_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.sensores
+    OWNER to <Seu Usuario>;  -- Coloque o nome do usuário criado por você
+
+-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+-- Table: public.usuario
+
+-- DROP TABLE IF EXISTS public.usuario;
+
+CREATE TABLE IF NOT EXISTS public.usuario
+(
+    id integer NOT NULL DEFAULT nextval('usuario_id_seq'::regclass),
+    nome_usuario character varying(50) COLLATE pg_catalog."default",
+    senha character varying(180) COLLATE pg_catalog."default",
+    nome_completo character varying(180) COLLATE pg_catalog."default",
+    email character varying(180) COLLATE pg_catalog."default",
+    grupo integer,
+    CONSTRAINT usuario_pkey PRIMARY KEY (id),
+    CONSTRAINT usuario_nome_usuario_key UNIQUE (nome_usuario)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.usuario
+    OWNER to <Seu Usuario>;  -- Coloque o nome do usuário criado por você
+-- Index: idx_nome_usuario
+
+-- DROP INDEX IF EXISTS public.idx_nome_usuario;
+
+CREATE INDEX IF NOT EXISTS idx_nome_usuario
+    ON public.usuario USING btree
+    (nome_usuario COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
