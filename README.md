@@ -12,7 +12,7 @@ inseridos, sendo obrigatórios os arquivos: AmazonRootCA1.pem da amazon, a sua p
 também na criação da Thing. Após isso é necessário entrar no arquivo /src/models/AWSThing.js e atualizar as structure com os seus caminhos, importante ressaltar que o client id é passado no /src/app.js de acordo com
 o parâmetro passado na instância do construtor ("var caminhos = new Thing('server')" - linha 51).
 
- Agora na pasta base(https://github.com/ViniciusAlmeid4/SmartFlow), ou seja, uma antes da /src, abra o prompt de comando da sua interface e use o comando npm install para baixar todos os módulos, garanta que todos foram instalados corretamente, ou seja, na
+ Agora na pasta base[https://github.com/ViniciusAlmeid4/SmartFlow], ou seja, uma antes da /src, abra o prompt de comando da sua interface e use o comando npm install para baixar todos os módulos, garanta que todos foram instalados corretamente, ou seja, na
 versão correta e sem problemas.
 
  Depois basta usar o comando "npm run start" e a aplicação deverá rodar sem problemas, caso ocorra um erro, busque informações no prompt de comando para resolvê-los ou entre em contato comigo para solicitar
