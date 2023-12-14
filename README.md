@@ -1,7 +1,7 @@
 # SmartFlow
 ## Projeto de TCC Senai CTM - Maringá - TDS09
 
-### Todo o código se encontra na pasta <<pasta>> que seria a pasta base dos códigos
+### Todo o código se encontra na pasta código que seria a pasta base dos códigos
 
  O objetivo desse README é instruir o leitor a implementar o sistema web em node.js, utilizando uma máquina para rodá-lo localmente e dando os caminhos para que tudo seja executada com sucesso.
 
@@ -9,6 +9,6 @@
 
  O segundo passo é a integração do serviço da Amazon Web Services do usuário, uma pasta com o nome */certificados* deve ser criada dentro da pasta */src* **(/src/certificados)**, dentro dele os certificados e chaves devem ser inseridos, sendo obrigatórios os arquivos: AmazonRootCA1.pem da amazon, a sua private key disponibilizada na criação da Thing, referente ao servidor node, no AWS e por fim o seu certificado pessoal disponibilizado também na criação da Thing. Após isso é necessário entrar no arquivo **/src/models/AWSThing.js** e atualizar as structure com os seus caminhos, importante ressaltar que o **client id é passado no** */src/app.js* de acordo com o parâmetro passado na instância do construtor ("var caminhos = new Thing('server')" - linha 51).
 
- Agora na pasta base, ou seja, uma antes da */src*, abra o prompt de comando da sua interface e use o comando npm install para baixar todos os módulos, por conta do arquivo *package.json* o Node Package Manager consegue identificar os modulos necessários, garanta que todos foram instalados corretamente, ou seja, na versão correta e sem problemas.
+ Agora na pasta base, ou seja, uma antes da */src*, abra o prompt de comando da sua interface e use o comando "npm install" para baixar todos os módulos, por conta do arquivo *package.json* o Node Package Manager consegue identificar os modulos necessários. Após isso garanta que todos os modulos foram instalados corretamente, ou seja, na versão correta e sem problemas para garantir que não ocorram erros.
 
- Depois basta usar o comando "npm run start" e a aplicação deverá rodar sem problemas, caso ocorra um erro, busque informações no prompt de comando para resolvê-los ou entre em contato comigo para solicitar assistência.
+ Depois basta usar o comando "npm run start" e a aplicação deverá rodar sem problemas, caso ocorra um erro, busque informações no prompt de comando para resolvê-los ou entre em contato com o dono do repositório para solicitar assistência.
