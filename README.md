@@ -1,7 +1,7 @@
 # SmartFlow
 ## Projeto de TCC Senai CTM - Maringá - TDS09
 
-### Todo o código se encontra na pasta código que seria a pasta base dos códigos
+--  **Todo o código se encontra na pasta código que seria a pasta base dos códigos**  --
 
  O objetivo desse README é instruir o leitor a implementar o sistema web em node.js, utilizando uma máquina para rodá-lo localmente e dando os caminhos para que tudo seja executada com sucesso.
 
