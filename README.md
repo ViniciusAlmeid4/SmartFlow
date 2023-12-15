@@ -12,3 +12,5 @@
  Agora na pasta base, ou seja, uma antes da */src*, abra o prompt de comando da sua interface e use o comando "npm install" para baixar todos os módulos, por conta do arquivo *package.json* o Node Package Manager consegue identificar os modulos necessários. Após isso garanta que todos os modulos foram instalados corretamente, ou seja, na versão correta e sem problemas para garantir que não ocorram erros.
 
  Depois basta usar o comando "npm run start" e a aplicação deverá rodar sem problemas, caso ocorra um erro, busque informações no prompt de comando para resolvê-los ou entre em contato com o dono do repositório para solicitar assistência.
+
+(https://www.youtube.com/watch?v=0ozsd0aNbOQ&ab_channel=viniciusbsp) - link do vídeo para a apresentação do projeto
