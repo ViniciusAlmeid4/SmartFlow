@@ -1,0 +1,628 @@
+<!doctype html>
+<html class="fixed sidebar-left-collapsed" lang="pt-br">
+	<head>
+		<!-- Basic -->
+		<meta charset="UTF-8">
+
+		<title>Smartflow | Gerenciamento de Usuários</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="assets/vendor/magnific-popup/magnific-popup.css" />
+		<link rel="stylesheet" href="assets/vendor/bootstrap-datepicker/css/datepicker3.css" />
+
+		<!-- Specific Page Vendor CSS -->
+		<link rel="stylesheet" href="assets/vendor/select2/select2.css" />
+		<link rel="stylesheet" href="assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" />
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/theme.css" />
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="assets/stylesheets/skins/default.css" />
+
+		<!-- Head Libs -->
+		<script src="assets/vendor/modernizr/modernizr.js"></script>
+		
+		<!-- MHR -->
+		<link rel="stylesheet" href="assets/stylesheets/mhr/modais.css"/>
+		
+		<!-- Custom links -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+		
+	</head>
+	<body>
+		<section class="body">
+			<!-- start: header -->
+			<header class="header">
+			
+				<!-- start: alarms & user box -->
+				<div class="header-right">
+					<!-- start: alarms -->
+					<ul class="notifications">
+						<li class="">
+							<a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+								<i class="fa fa-bell"></i>
+								<span class="badge num-alarmes"></span>
+							</a>
+			
+							<div class="dropdown-menu notification-menu">
+								<div class="notification-title">
+									<span class="pull-right label label-default num-alarmes"></span>
+									Alarmes
+								</div>
+			
+								<div class="content">
+									<ul class="list-notificacao">
+										
+									</ul>
+			
+									<hr />
+			
+									<div class="text-right">
+										<a href="alarmes-historicos.html" class="view-more">View All</a>
+									</div>
+								</div>
+							</div>
+						</li>
+						<!-- Fullscreen -->
+						<li>
+							<a href="#" class="dropdown-toggle notification-icon" type="button" onclick="toggleFullScreen()">
+								<i class="fa fa-expand" id="expandir"></i>
+							</a>
+						</li>
+					</ul>
+					
+					<span class="separator"></span>
+					
+					<!-- start: user box -->
+					<div id="userbox" class="userbox">
+						<a href="#" data-toggle="dropdown">
+							<figure class="profile-picture">
+								<img src="assets/images/user.png" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
+							</figure>
+							<div class="profile-info">
+								<strong><span class="name" id="usuario"></span></strong>
+								<strong><span class="role" id="grupo"></span></strong>
+							</div>
+			
+							<i class="fa custom-caret"></i>
+						</a>
+			
+						<div class="dropdown-menu">
+							<ul class="list-unstyled">
+								<li class="divider"></li>
+								<li>
+									<a role="menuitem" tabindex="-1" href="/logout" id="btLogout"><i class="fa fa-power-off"></i> Logout</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- end: alarms & user box -->
+			</header>
+			<!-- end: header -->
+
+			<div class="inner-wrapper">
+				<!-- start: sidebar -->
+				<aside id="sidebar-left" class="sidebar-left">
+				
+					<div class="sidebar-header">
+						<div class="sidebar-title">
+							MENU
+						</div>
+						<div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+							<i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+						</div>
+					</div>
+				
+					<div class="nano">
+						<div class="nano-content">
+							<nav id="menu" class="nav-main" role="navigation">
+								<ul class="nav nav-main">
+									<li>
+										<a href="index.html">
+											<i class="bi bi-house-fill" aria-hidden="true"></i>
+											<span>Página inicial</span>
+										</a>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="bi bi-graph-up" aria-hidden="true"></i>
+											<span>Gráficos</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>  <!--class="nav-active" -->
+												<a href="charts-tensao.html">
+													Tensão
+												</a>
+											</li>
+											<li>
+												<a href="charts-corrente.html">
+													 Corrente
+												</a>
+											</li>
+											<li>
+												<a href="charts-nivel.html">
+													 Nível
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="bi bi-server" aria-hidden="true"></i>
+											<span>Histórico</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="dados-historicos.html">
+													 Dados
+												</a>
+											</li>
+											<li>
+												<a href="alarmes-historicos.html">
+													 Alarmes
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<a>
+											<i class="bi bi-pencil-fill" aria-hidden="true"></i>
+											<span>Cadastros</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="usuarios.html">
+													 Usuários
+												</a>
+											</li>
+											<li>
+												<a href="sensores.html">
+													 Sensores
+												</a>
+											</li>
+											<li>
+												<a href="alarmes.html">
+													 Configuração de Alarmes
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="nav-parent">
+										<li class="nav">
+											<a href="https://aws.amazon.com/pt/">
+												<i class="bi bi-amazon" aria-hidden="true"></i>
+												<span>AWS</span>
+											</a>
+										</li>
+									</li>
+								</ul>
+							</nav>
+							
+						</div>
+						
+					</div>
+				
+				</aside>
+				<!-- end: sidebar -->
+				
+				<section role="main" class="content-body">
+					<header class="page-header">
+						<h2>Gerenciamento de Usuários</h2>
+					
+						<div class="right-wrapper pull-right mr-lg">
+							<ol class="breadcrumbs">
+								<li>
+									<a href="index.html">
+										<i class="bi bi-house-fill"></i>
+									</a>
+								</li>
+								<li><span>Cadastros</span></li>
+								<li><span>Usuários</span></li>
+							</ol>
+						</div>
+					</header>
+
+					<!-- start: page -->
+					<section class="panel">
+						<header class="panel-heading">
+							<h2 class="panel-title">Usuários</h2>
+						</header>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="mb-md">
+										<button id="addToTable" class="btn btn-primary">Adicionar usuário <i class="fa fa-plus ml-xs"></i></button>
+									</div>
+								</div>
+							</div>
+							<div>
+							  <table class="table table-bordered table-striped mb-none" id="datatable-editable">
+								  <thead>
+									  <tr>
+										  <th>Usuário <span class="required">*</span></th>
+										  <th>Senha <span class="required">*</span></th>
+										  <th>Nome <span class="required">*</span></th>
+										  <th>E-mail</th>
+										  <th>Grupo</th>
+										  <th>Editar</th>
+									  </tr>
+								  </thead>
+								  <tbody id="table">
+								  </tbody>
+							  </table>
+							</div>
+						</div>
+					</section>
+					<!-- end: page -->
+					
+					<p class="text-center text-muted mt-md mb-md">&copy; Copyright 2023. Todos os direitos reservados. <a>Link aqui!</a>.</p>
+				</section>
+			</div>
+		</section>
+
+		<!-- Modal Atualiza Usuário -->
+		<div id="modalAtualizaUsuario" class="modal-block modal-header-color modal-block-primary mfp-hide">
+			<section class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title" id="title-modal">Atualizar Usuário</h2>
+					<span class="header-right modal-dismiss" id="close-modal">X</span>
+				</header>
+			
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Usuário <span class="required">*</span></label>
+						<div class="col-sm-10">
+							<input id="atualizaNomeUsuario" type="text" name="username" class="form-control" placeholder="eg.: John Doe" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Senha <span class="required">*</span></label>
+						<div class="col-sm-10">
+							<button class="col-sm-5 btn btn-primary" style="padding: 6px" id="updateSenha">Mudar</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Nome <span class="required">*</span></label>
+						<div class="col-sm-10">
+							<input id="atualizaNome" type="text" name="fullname" class="form-control" placeholder="eg.: John Doe" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Email </label>
+						<div class="col-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-envelope"></i>
+								</span>
+								<input id="atualizaEmail" type="email" name="email" class="form-control" placeholder="eg.: email@email.com"/>
+							</div>
+						</div>
+						<div class="col-sm-9">
+
+						</div>
+					</div>
+					<!-- Grupo -->
+					<div class="form-group" id="formGrupo">
+						<label class="col-sm-2 control-label">Grupo </label>
+						<div class="col-sm-10">
+							<div class="input-group">
+								<select class="form-control input-md" id="atualizaGrupo">
+									<option value="0">Operador</option>
+									<option value="1">Manutenção</option>
+									<option value="2">Administrador</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-md-12 text-center" style="padding: 6px">
+							<button class="col-sm-12 btn btn-primary" style="padding: 6px" id="updateUsuario">Atualizar</button>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+
+		<!-- Modal Cadastra Usuário -->
+		<div id="modalCadastraUsuario" class="modal-block modal-header-color modal-block-primary mfp-hide">
+			<section class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title" id="title-modal">Cadastrar Usuário</h2>
+					<span class="header-right modal-dismiss" id="close-modal">X</span>
+				</header>
+			
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Usuário <span class="required">*</span></label>
+						<div class="col-sm-9">
+							<input id="cadastraNomeUsuario" type="text" name="username" class="form-control" placeholder="eg.: John Doe" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Senha <span class="required">*</span></label>
+						<div class="col-sm-9">
+							<input id="cadastraSenha" type="password" name="password" class="form-control" placeholder="••••••••••" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Confirmar senha <span class="required">*</span></label>
+						<div class="col-sm-9">
+							<input id="cadastraConfirmaSenha" type="password" name="password" class="form-control" placeholder="••••••••••" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Nome <span class="required">*</span></label>
+						<div class="col-sm-9">
+							<input id="cadastraNome" type="text" name="fullname" class="form-control" placeholder="eg.: John Doe" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Email </label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-envelope"></i>
+								</span>
+								<input id="cadastraEmail" type="email" name="email" class="form-control" placeholder="eg.: email@email.com"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Grupo </label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<select class="form-control input-md" id="cadastraGrupo">
+									<option value="0">Operador</option>
+									<option value="1">Manutenção</option>
+									<option value="2">Administrador</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-md-12 text-center" style="padding: 6px">
+							<button class="col-sm-12 btn btn-primary" style="padding: 6px" id="cadastrarUsuario">Cadastrar</button>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+
+		<!-- Modal Altera Senha -->
+		<div id="modalAlteraSenha" class="modal-block modal-header-color modal-block-primary mfp-hide">
+			<section class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title" id="title-modal">Alterar Senha</h2>
+					<span class="header-right modal-dismiss" id="close-modal">X</span>
+				</header>
+			
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Usuário </label>
+						<div class="col-sm-9">
+							<input id="alteraSenhaUsuario" type="text" name="fullname" class="form-control input-text-deleta" readonly/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Senha Atual <span class="required">*</span></label>
+						<div class="col-sm-9">
+							<input id="alteraSenha" type="password" name="password" class="form-control" placeholder="••••••••••" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Nova Senha <span class="required">*</span></label>
+						<div class="col-sm-9">
+							<input id="alteraNovaSenha" type="password" name="newPassword" class="form-control" placeholder="••••••••••" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Confirmar Nova Senha <span class="required">*</span></label>
+						<div class="col-sm-9">
+							<input id="alteraNovaConfirmaSenha" type="password" name="password" class="form-control" placeholder="••••••••••" required/>
+						</div>
+					</div>
+				</div>
+
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-md-12 text-center" style="padding: 6px">
+							<button class="col-sm-12 btn btn-primary" style="padding: 6px" id="updateSenha">Atualizar</button>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+		
+		<!-- Modal Deleta Usuário -->
+		<div id="modalDeletaUsuario" class="modal-block modal-header-color modal-block-danger mfp-hide">
+			<section class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title" id="title-modal">Deletar Usuário</h2>
+					<span class="header-right modal-dismiss" id="close-modal">X</span>
+				</header>
+			
+				<div class="panel-body">
+					<div class="form-group text-center">
+						<label class="col-sm-12" id="title-modal-deleta">Cuidado!!!</label>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-12 text-center" id="text-deleta">Ao pressionar o botão o usuário abaixo será deletado:
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Usuário </label>
+						<div class="col-sm-9">
+							<input id="deletaNomeUsuario" type="text" name="fullname" class="form-control input-text-deleta" readonly/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Nome </label>
+						<div class="col-sm-9">
+							<input id="deletaNome" type="text" name="fullname" class="form-control" readonly/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Email </label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-envelope"></i>
+								</span>
+								<input id="deletaEmail" type="email" name="email" class="form-control" readonly/>
+							</div>
+						</div>
+						<div class="col-sm-9">
+
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Grupo </label>
+						<div class="col-sm-9">
+							<input id="deletaGrupo" type="text" name="group" class="form-control" readonly/>
+						</div>
+					</div>
+				</div>
+
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-md-12 text-center" style="padding: 6px">
+							<button class="col-sm-12 btn btn-danger" style="padding: 6px" id="deletarUsuario">Deletar</button>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+
+		<!-- Modal Sobre -->
+		<div id="modalHeaderColorPrimary" class="modal-block modal-header-color modal-block-primary mfp-hide">
+			<section class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title">Sobre</h2>
+				</header>
+				<div class="panel-body">
+					<div class="modal-wrapper">
+						<div class="modal-icon">
+							<i class="fa fa-info-circle"></i>
+						</div>
+						<div class="modal-text">
+							<h4>Termosis</h4>
+							<p id="versao">Versão 0.1.0</p>
+						</div>
+					</div>
+					<p class="text-muted mt-lg">&copy; Copyright 2023. Todos os direitos reservados. <a href="https://mhrsolucoes.com.br">MHR Soluções</a>.</p>
+				</div>
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<button class="btn btn-primary modal-dismiss">OK</button>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+		
+		<div id="modalVerificarAlarme" class="modal-block modal-header-color modal-block-info mfp-hide">
+			<section class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title" id="title-modal">Verificar Alarme</h2>
+					<span class="header-right modal-dismiss" id="close-modal">X</span>
+				</header>
+			
+				<div class="panel-body">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Nome <span class="required">*</span></label>
+						<div class="col-sm-7">
+							<input id="verificaNome" type="text" name="alarmname" class="form-control input-text-deleta" readonly/>
+						</div>
+						<label class="col-sm-1 control-label">Nº </label>
+						<div class="col-sm-2">
+							<input id="verificaNum" type="number" name="numsensor" class="form-control input-text-deleta" readonly/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Limites: </label>
+						<label class="col-sm-1 control-label">Min </label>
+						<div class="col-sm-4">
+							<input id="verificaMin" type="number" name="min" class="form-control input-text-deleta" readonly/>
+						</div>
+						<label class="col-sm-1 control-label">Max </label>
+						<div class="col-sm-4">
+							<input id="verificaMax" type="number" name="max" class="form-control input-text-deleta" readonly/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Valor do alarme <span class="required">*</span></label>
+						<div class="col-sm-5">
+							<input id="verificaValAlarme" type="valalarm" name="sensornumber" class="form-control input-text-deleta" placeholder="eg.: 0" readonly/>
+						</div>
+						<label class="col-sm-1 control-label">Tipo </label>
+						<div class="col-sm-4">
+							<input id="verificaTipo" type="text" name="type" class="form-control input-text-deleta" readonly/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">data <span class="required">*</span></label>
+						<div class="col-sm-10">
+							<input id="verificaData" type="text" name="date" class="form-control input-text-deleta" readonly/>
+						</div>
+					</div>
+				</div>
+
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-md-12 text-center" style="padding: 6px">
+							<div class="col-md-2"></div>
+							<button class="btn btn-info btn-lg modal-dismiss col-md-8" style="padding: 6px" id="verificarAlarme">Verificar</button>
+							<div class="col-md-2"></div>
+						</div>
+					</div>
+				</footer>
+			</section>
+		</div>
+
+		<!-- Vendor -->
+		<script src="assets/vendor/jquery/jquery.js"></script>
+		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>
+		<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="assets/vendor/magnific-popup/magnific-popup.js"></script>
+		<script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+
+		<!-- Specific Page Vendor -->
+		<script src="assets/vendor/select2/select2.js"></script>
+		<script src="assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+		<script src="assets/vendor/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js"></script>
+		<script src="assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+
+		<!-- Theme Base, Components and Settings -->
+		<script src="assets/javascripts/theme.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="assets/javascripts/theme.init.js"></script>
+
+		<!-- MHR -->
+		<script src="assets/javascripts/mhr/full-screen.js"></script>
+		<script src="assets/javascripts/mhr/usuarios.js" type="module" async></script>
+		<script src="assets/javascripts/mhr/userData.js"></script>
+		<script src="assets/javascripts/mhr/getAlarmesAtivos.js"></script>
+		<script src="assets/javascripts/mhr/modals.js"></script>
+		
+	</body>
+</html>

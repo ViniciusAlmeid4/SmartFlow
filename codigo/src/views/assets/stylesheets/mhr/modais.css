@@ -1,0 +1,30 @@
+#title-modal{
+    display: inline-block;
+}
+
+#close-modal{
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#title-modal-deleta{
+    color: red;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+#text-deleta{
+    font-size: medium;
+}
+
+.input-text-deleta{
+    font-weight: bolder;
+}
+
+.fa:hover{
+    cursor: pointer;
+}

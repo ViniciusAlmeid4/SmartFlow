@@ -1,0 +1,36 @@
+
+/* ----- PAGINA INICIAL ----- */
+
+#div-area-atual{
+    margin-right: 32px;
+}
+
+#body-pag-inicial{
+    background-color: #3d4d69;
+}
+
+#title-init-page{
+    margin-bottom: 4rem;
+}
+
+#title-init-page{
+    color: white;
+    font-weight: bold;
+}
+
+#title-tables{
+    margin-top: 7rem;
+    margin-bottom: 4rem;
+}
+
+#title-text-tables{
+    color: whitesmoke;
+}
+
+.td-index{
+    width: 33%;
+}
+
+.clearfix{
+    cursor: pointer;
+}
